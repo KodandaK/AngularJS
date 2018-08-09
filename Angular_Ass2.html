@@ -1,0 +1,29 @@
+<!DOCTYPE HTML>
+<HTML>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<body>
+<div ng-app="myApp"  ng-controller="myCntrl" align="center">
+<p> User has to enter below info </p>
+
+User Name : <input type="text" ng-model="UserName">  </br>
+City Name : <input type="text" ng-model="CityName">  </br>
+
+<p> Information was entered by users are : </p> 
+<p ng-bind="UserName | uppercase" > </p>
+<p ng-bind="CityName | uppercase" > </p>
+<p ng-bind="today | date " </p>
+</div>
+
+<script>
+
+var app = angular.module('myApp',[]);
+app.controller('myCntrl',function($scope){
+     $scope.UserName="Kodanda";
+	 $scope.CityName="Pune";
+	 $scope.today=new Date();
+	 });
+
+
+</script>
+</body>
+</HTML>
