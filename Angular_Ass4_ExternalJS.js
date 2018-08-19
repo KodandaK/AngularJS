@@ -1,10 +1,9 @@
 
 var app = angular.module('myApp', []);
 app.controller('CDController', function($scope) {
-    $scope.CDId = "234187";
-    $scope.CDTitle = "Wipro Bulb";
-	$scope.CDPrice = "450";
+    
+	$scope.CD = { CDId : 234187, CDTitle : "Wipro Bulb", CDPrice : "450" +" Rupes"};
     $scope.getAllDetails = function() {
-		return $scope.CDId + " " + $scope.CDTitle + " " + $scope.CDPrice +"rupees"; 
-    };
+		return $scope.CD.CDId + " " + $scope.CD.CDTitle + " " + $scope.CD.CDPrice ; };
+
 });
