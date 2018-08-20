@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<center>
+<style>
+table, th , td  {
+  border: 1px solid grey;
+  border-collapse: collapse;
+  padding: 7px;
+}
+table tr:nth-child(odd) {
+  background-color: #f1f1f1;
+}
+table tr:nth-child(even) {
+  background-color: #ffffff;
+}
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-route.js"></script>
+
+<body ng-app="myApp" >  
+
+<p><a href="#/!">Main</a></p>
+<a href="#!red">New CDs</a> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp 
+<a href="#!blue">View All CDs </a> </br>
+
+
+<div ng-app="myApp" ng-controller="CDController">
+<p ng-bind="parlorName | uppercase"> </p>
+<p ng-bind="parlorAddress | uppercase"> </p>
+<p ng-bind="top5 | uppercase"> </p>
+
+</div>
+
+
+<table ng-controller="CDController" border="2">
+<tr ></br>
+<td>CD Names : </td>
+<td>CD Langauges : </td>
+<td>CD Prices : </td>
+</tr>
+<tr ng-repeat="x in CD">
+<td>{{x.CDTitle}}  </td>
+<td> {{x.CDLanguage}} </td>
+<td> {{x.CDPrice}} </td>
+</tr>
+</table></br>
+
+<div ng-view></div>
+
+<script>
+
+var app = angular.module("myApp", ["ngRoute"]);
+app.config(function($routeProvider) {
+    $routeProvider
+    .when("/", {
+        templateUrl : "C:\Users\KO858675\Desktop\Assignment\AngularJS\AngularJS_Assignment7.html"
+    })
+    .when("/red", {
+        templateUrl : "C:\Users\KO858675\Desktop\Assignment\AngularJS\Assignment7_NewCDs.html"
+    })
+    .when("/blue", {
+        templateUrl : "C:\Users\KO858675\Desktop\Assignment\AngularJS\Assignment7_ViewAllCDs.html"
+    });
+});
+
+
+var app1 = angular.module('myApp', []);
+app1.controller('CDController', function($scope) {
+	$scope.parlorName="For being a Human parlor";
+    $scope.parlorAddress="Pune Maharastra";
+	$scope.top5="Top 5 CD's rented for this Week are:";
+	$scope.CD = [ { CDTitle : "HowToSuccess", CDLanguage : "English" , CDPrice : 100 },
+				  { CDTitle : "Pray" , CDLanguage : "Marati" , CDPrice : 50 },
+				  { CDTitle : "Budhism" , CDLanguage : "Hindi" , CDPrice : 1000 },
+				  { CDTitle : "Hindusim" , CDLanguage : "Tamil" , CDPrice : 650 },
+				  { CDTitle : "Food" , CDLanguage : "Kanada" , CDPrice : 520 } ]
+});
+</script>
+
+<p>Click on the above links to navigate to "NewCDs", "View All CDs", or back to "MAIN"</p>
+</body>
+</center>
+</html>
