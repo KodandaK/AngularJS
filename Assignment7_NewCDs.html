@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<style>
+table, th , td  {
+  border: 1px solid grey;
+  border-collapse: collapse;
+  padding: 7px;
+}
+table tr:nth-child(odd) {
+  background-color: #f1f1f1;
+}
+table tr:nth-child(even) {
+  background-color: #ffffff;
+}
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<body ng-app="myApp">
+<center>
+
+<div ng-app="myApp" ng-controller="CDController">
+<p ng-bind="newCDs | uppercase"> </p>
+
+</div>
+
+<table ng-controller="CDController" border="2">
+<tr bgcolor="#FF0000">
+<td>CD Names : </td>
+<td>CD Langauges : </td>
+<td>CD Prices : </td>
+</tr>
+<tr ng-repeat="x in CD">
+<td>{{x.CDTitle}}  </td>
+<td> {{x.CDLanguage}} </td>
+<td> {{x.CDPrice}} </td>
+</tr>
+</table>
+
+
+<script>
+var app = angular.module('myApp', []);
+app.controller('CDController', function($scope) {
+	$scope.newCDs="Newly added CD's are :";
+    
+	$scope.CD = [ { CDTitle : "HowToSuccess", CDLanguage : "English" , CDPrice : 100 },
+				  { CDTitle : "Pray" , CDLanguage : "Marati" , CDPrice : 50 },
+				  { CDTitle : "Budhism" , CDLanguage : "Hindi" , CDPrice : 1000 },
+				  { CDTitle : "Hindusim" , CDLanguage : "Tamil" , CDPrice : 650 },
+				  { CDTitle : "Food" , CDLanguage : "Kanada" , CDPrice : 520 } ]
+});
+</script>
+</center>
+</body>
+</html>
